@@ -36,6 +36,7 @@ namespace TrabalhoDAAW.Controllers
         }
 
         // GET: Produtos/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -58,7 +59,7 @@ namespace TrabalhoDAAW.Controllers
         // GET: Produtos/Create
         public IActionResult Create()
         {
-            ViewData["MarcaId"] = new SelectList(_context.Set<Marca>(), "Marcaid", "Marcaid");
+            ViewData["MarcaId"] = new SelectList(_context.Set<Marca>(), "Marcaid", "Nome");
             return View();
         }
 
@@ -75,11 +76,12 @@ namespace TrabalhoDAAW.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MarcaId"] = new SelectList(_context.Set<Marca>(), "Marcaid", "Marcaid", produto.MarcaId);
+            ViewData["MarcaId"] = new SelectList(_context.Set<Marca>(), "Marcaid", "Nome", produto.MarcaId);
             return View(produto);
         }
 
         // GET: Produtos/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,7 +94,7 @@ namespace TrabalhoDAAW.Controllers
             {
                 return NotFound();
             }
-            ViewData["MarcaId"] = new SelectList(_context.Set<Marca>(), "Marcaid", "Marcaid", produto.MarcaId);
+            ViewData["MarcaId"] = new SelectList(_context.Set<Marca>(), "Marcaid", "Nome", produto.MarcaId);
             return View(produto);
         }
 
@@ -128,11 +130,12 @@ namespace TrabalhoDAAW.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MarcaId"] = new SelectList(_context.Set<Marca>(), "Marcaid", "Marcaid", produto.MarcaId);
+            ViewData["MarcaId"] = new SelectList(_context.Set<Marca>(), "Marcaid", "Nome", produto.MarcaId);
             return View(produto);
         }
 
         // GET: Produtos/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

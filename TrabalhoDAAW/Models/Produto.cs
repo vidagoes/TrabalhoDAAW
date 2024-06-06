@@ -15,8 +15,10 @@ namespace TrabalhoDAAW.Models
 
         public string Tipo { get; set; }
 
+        [Display(Name = "Marca")]
         public int MarcaId { get; set; }
 
+        [Display(Name = "Marca")]
         public Marca? Marca { get; set; }
         [Required]
         public decimal Preco { get; set; }
