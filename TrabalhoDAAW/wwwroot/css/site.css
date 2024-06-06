@@ -20,3 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+header img.logotipo-horizontal {
+    width: 150px;
+}
